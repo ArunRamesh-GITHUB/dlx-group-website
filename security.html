@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security &amp; Compliance — DLX Solutions Group</title>
+  <meta name="description" content="How DLX Solutions Group handles data, call recordings, and personal information. GDPR compliant with transparent subprocessor disclosure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563eb'/><text x='6' y='23' font-family='Arial' font-weight='900' font-size='18' fill='white'>D</text></svg>" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-mark">DLX</span>
+      DLX Solutions Group
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="security.html">Security</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book a Demo</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="security.html">Security &amp; Compliance</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html">Book a Demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="background:var(--navy);padding:56px 24px;color:white;">
+  <div class="container">
+    <div class="section-label section-label-light">Trust &amp; Transparency</div>
+    <h1 class="section-title" style="color:white;">Security &amp; Compliance</h1>
+    <p class="section-sub section-sub-light">We handle calls and personal data on behalf of your business. Here is exactly what we collect, who we share it with, how long we keep it, and how we protect it.</p>
+  </div>
+</section>
+
+<!-- DATA HANDLED -->
+<section class="section">
+  <div class="container" style="max-width:840px;">
+    <div class="section-label">Data Handling</div>
+    <h2 class="section-title">What data we handle</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Data Type</th>
+            <th>Source</th>
+            <th>Purpose</th>
+            <th>Retention</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Caller name</strong></td>
+            <td>Captured during call</td>
+            <td>Lead identification</td>
+            <td>Until deletion request or contract end</td>
+          </tr>
+          <tr>
+            <td><strong>Caller phone number</strong></td>
+            <td>Caller-provided or Twilio CLI</td>
+            <td>Callback &amp; lead record</td>
+            <td>Until deletion request or contract end</td>
+          </tr>
+          <tr>
+            <td><strong>Call reason / message</strong></td>
+            <td>Captured during call</td>
+            <td>Lead qualification &amp; SMS summary</td>
+            <td>Until deletion request or contract end</td>
+          </tr>
+          <tr>
+            <td><strong>Call recording (audio)</strong></td>
+            <td>Twilio recording</td>
+            <td>Quality, dispute resolution</td>
+            <td><strong>60 days</strong>, then auto-deleted</td>
+          </tr>
+          <tr>
+            <td><strong>Call transcript (text)</strong></td>
+            <td>AI transcription</td>
+            <td>Lead summary generation</td>
+            <td><strong>60 days</strong>, then auto-deleted</td>
+          </tr>
+          <tr>
+            <td><strong>Call metadata</strong></td>
+            <td>Twilio logs</td>
+            <td>Billing, debugging</td>
+            <td>90 days</td>
+          </tr>
+          <tr>
+            <td><strong>Business owner phone</strong></td>
+            <td>Client onboarding</td>
+            <td>SMS notifications</td>
+            <td>Duration of contract</td>
+          </tr>
+          <tr>
+            <td><strong>Website contact form</strong></td>
+            <td>Visitors to this site</td>
+            <td>Responding to enquiries</td>
+            <td>12 months</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SUBPROCESSORS -->
+<section class="section section-alt">
+  <div class="container" style="max-width:840px;">
+    <div class="section-label">Third Parties</div>
+    <h2 class="section-title">Our subprocessors</h2>
+    <p style="color:var(--grey-text);margin-bottom:32px;">We use the following third-party providers to deliver our service. Each is a reputable provider with their own data protection commitments.</p>
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <div style="background:white;border:1px solid var(--grey-mid);border-radius:12px;padding:24px 28px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px;">
+          <div style="font-size:1.5rem;">📡</div>
+          <div>
+            <strong style="font-size:1rem;">Twilio</strong>
+            <p style="font-size:0.8rem;color:var(--grey-text);margin:0;">twilio.com &nbsp;|&nbsp; United States (with UK/EU data handling options)</p>
+          </div>
+        </div>
+        <p style="font-size:0.9rem;color:var(--grey-text);margin:0;"><strong>Purpose:</strong> Voice call handling, SMS delivery, call routing. Twilio processes inbound and outbound calls and stores call recordings on our behalf. We use Twilio in compliance with UK GDPR standard contractual clauses.</p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--grey-mid);border-radius:12px;padding:24px 28px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px;">
+          <div style="font-size:1.5rem;">🗄️</div>
+          <div>
+            <strong style="font-size:1rem;">Supabase</strong>
+            <p style="font-size:0.8rem;color:var(--grey-text);margin:0;">supabase.com &nbsp;|&nbsp; AWS EU-West (Ireland)</p>
+          </div>
+        </div>
+        <p style="font-size:0.9rem;color:var(--grey-text);margin:0;"><strong>Purpose:</strong> Secure database storage for call records, lead data, and client configuration. Data is stored in the EU (Ireland) region and is encrypted at rest and in transit.</p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--grey-mid);border-radius:12px;padding:24px 28px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px;">
+          <div style="font-size:1.5rem;">🤖</div>
+          <div>
+            <strong style="font-size:1rem;">OpenAI</strong>
+            <p style="font-size:0.8rem;color:var(--grey-text);margin:0;">openai.com &nbsp;|&nbsp; United States (data processing agreement in place)</p>
+          </div>
+        </div>
+        <p style="font-size:0.9rem;color:var(--grey-text);margin:0;"><strong>Purpose:</strong> Intent classification only — used to understand the caller's reason for calling and urgency level. We do not send full call content or personal identifiers to OpenAI. OpenAI does not use API data to train models.</p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--grey-mid);border-radius:12px;padding:24px 28px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px;">
+          <div style="font-size:1.5rem;">☁️</div>
+          <div>
+            <strong style="font-size:1rem;">Cloud Hosting Provider</strong>
+            <p style="font-size:0.8rem;color:var(--grey-text);margin:0;">Railway or Render &nbsp;|&nbsp; United States or EU</p>
+          </div>
+        </div>
+        <p style="font-size:0.9rem;color:var(--grey-text);margin:0;"><strong>Purpose:</strong> Hosting the application server that handles call routing and lead processing. The server does not store personal data directly — it writes to Supabase and passes calls through Twilio.</p>
+      </div>
+
+    </div>
+
+    <p class="text-small mt-24">We do not sell, rent, or share personal data with any third party for marketing or advertising purposes. We will update this subprocessor list when we make changes. Business clients with a Data Processing Addendum will be notified of material changes.</p>
+  </div>
+</section>
+
+<!-- SECURITY MEASURES -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="section-label">Security Controls</div>
+    <h2 class="section-title">How we protect your data</h2>
+
+    <div class="feature-grid" style="margin-top:8px;">
+      <div class="feature-card">
+        <div class="feature-icon">🔐</div>
+        <h3>Encryption in transit</h3>
+        <p>All data transmitted between your callers, Twilio, and our servers uses TLS encryption. No data travels over unencrypted connections.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗄️</div>
+        <h3>Encryption at rest</h3>
+        <p>Data stored in our database (Supabase/PostgreSQL) is encrypted at rest using AES-256 encryption provided by the cloud infrastructure.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔑</div>
+        <h3>Access controls</h3>
+        <p>Database access is restricted to the application server using service role keys. No public access to raw data. Admin access is limited to authorised personnel only.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🕐</div>
+        <h3>Automatic data deletion</h3>
+        <p>Call recordings are automatically deleted after 60 days. Call transcripts are automatically deleted after 60 days. No manual step required.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Logging for dispute resolution</h3>
+        <p>All call events are logged with timestamps. This provides an audit trail for disputes and ensures accountability.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🇬🇧</div>
+        <h3>UK/EU data storage</h3>
+        <p>Lead and call data is stored in EU-region databases (AWS Ireland). International transfers use appropriate safeguards under UK GDPR.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GDPR & COMPLIANCE -->
+<section class="section section-alt">
+  <div class="container" style="max-width:760px;">
+    <div class="section-label">UK GDPR</div>
+    <h2 class="section-title">Legal basis &amp; your rights</h2>
+
+    <div style="display:flex;flex-direction:column;gap:20px;margin-top:32px;">
+
+      <div style="background:white;border:1px solid var(--grey-mid);border-radius:12px;padding:24px;">
+        <h3 style="margin-bottom:8px;">Call recording disclaimer</h3>
+        <p style="font-size:0.9rem;color:var(--grey-text);margin:0;">Every call handled by our AI plays a recording disclaimer at the very start: <em>"This call may be recorded for quality and training purposes."</em> This is a non-negotiable part of the system and cannot be disabled by clients.</p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--grey-mid);border-radius:12px;padding:24px;">
+        <h3 style="margin-bottom:8px;">Lawful basis for processing</h3>
+        <p style="font-size:0.9rem;color:var(--grey-text);margin:0;">We process caller data on the lawful basis of <strong>legitimate interests</strong> (providing a call management service that the calling business has contracted with us to deliver). Lead data is processed under <strong>contract</strong> (performing our service agreement with clients).</p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--grey-mid);border-radius:12px;padding:24px;">
+        <h3 style="margin-bottom:8px;">Individual rights</h3>
+        <p style="font-size:0.9rem;color:var(--grey-text);margin-bottom:12px;">Callers whose data we hold have the right to:</p>
+        <ul style="margin-left:20px;font-size:0.9rem;color:var(--grey-text);">
+          <li>Access their data (Subject Access Request)</li>
+          <li>Correction of inaccurate data</li>
+          <li>Erasure ("right to be forgotten")</li>
+          <li>Restriction of processing</li>
+          <li>Object to processing</li>
+          <li>Lodge a complaint with the ICO</li>
+        </ul>
+        <p style="font-size:0.9rem;color:var(--grey-text);margin-top:12px;">To exercise any of these rights, contact: <a href="mailto:dlxwebsites@outlook.com">dlxwebsites@outlook.com</a></p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--grey-mid);border-radius:12px;padding:24px;">
+        <h3 style="margin-bottom:8px;">ICO complaints</h3>
+        <p style="font-size:0.9rem;color:var(--grey-text);margin:0;">If you have an unresolved complaint about how we handle your data, you have the right to complain to the Information Commissioner's Office (ICO) at <strong>ico.org.uk</strong> or by calling 0303 123 1113.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INCIDENT CONTACT -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="notice notice-warn">
+      <div class="notice-title">Security incidents or data concerns</div>
+      <p style="margin:0;font-size:0.9rem;">If you become aware of or suspect a data breach or security incident involving our services, please contact us immediately at <a href="mailto:dlxwebsites@outlook.com">dlxwebsites@outlook.com</a>. We take all reports seriously and will respond within 24 hours.</p>
+    </div>
+
+    <div style="margin-top:24px;">
+      <p style="font-size:0.9rem;color:var(--grey-text);">For business clients requiring a formal Data Processing Addendum (DPA) for their own GDPR compliance, please contact us and we will provide one. See also our full <a href="privacy.html">Privacy Policy</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-brand">
+          <span class="logo-mark">DLX</span>
+          DLX Solutions Group
+        </a>
+        <p class="footer-tagline">AI-powered telephony solutions for local businesses. Never miss a call, never miss a lead.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="how-it-works.html">AI Receptionist</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="security.html">Security &amp; Compliance</a></li>
+          <li><a href="contact.html">Book a Demo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="aup.html">Acceptable Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><strong>DLX SOLUTIONS GROUP LIMITED</strong> &nbsp;|&nbsp; Company No: 17033961 &nbsp;|&nbsp; Registered in England and Wales</p>
+      <p>Registered Office: 11 Rhodfa Brenig, Colwyn Bay, LL29 6EA &nbsp;|&nbsp; Contact: <a href="mailto:dlxwebsites@outlook.com" style="color:rgba(255,255,255,0.6);">dlxwebsites@outlook.com</a></p>
+      <p class="text-small mt-8" style="color:rgba(255,255,255,0.4);">We operate online and do not accept visitors at our registered office.</p>
+      <div class="footer-legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookie Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="aup.html">Acceptable Use Policy</a>
+      </div>
+      <p class="text-small mt-8" style="color:rgba(255,255,255,0.35);">&copy; 2026 DLX Solutions Group. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-inner">
+    <p class="cookie-text">We use essential cookies to make this site work. <a href="cookies.html">Cookie Policy</a> | <a href="privacy.html">Privacy Policy</a></p>
+    <div class="cookie-actions">
+      <button class="cookie-btn cookie-accept" id="cookieAccept">Accept</button>
+      <button class="cookie-btn cookie-reject" id="cookieReject">Reject Non-Essential</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
