@@ -96,7 +96,7 @@
       message.value
     );
 
-    window.location.href = 'mailto:dlxwebsites@outlook.com?subject=' + subject + '&body=' + body;
+    window.location.href = 'mailto:support@dlxsolutions.co.uk?subject=' + subject + '&body=' + body;
 
     // Show confirmation message
     var confirm = document.getElementById('formConfirm');
