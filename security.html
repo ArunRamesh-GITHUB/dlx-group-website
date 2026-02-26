@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Security &amp; Compliance — DLX Solutions Group</title>
   <meta name="description" content="How DLX Solutions Group handles data, call recordings, and personal information. GDPR compliant with transparent subprocessor disclosure." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Fonts: Inter loaded from system/local where available; fallback to system-ui stack in CSS -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563eb'/><text x='6' y='23' font-family='Arial' font-weight='900' font-size='18' fill='white'>D</text></svg>" />
 </head>
@@ -72,19 +70,19 @@
             <td><strong>Caller name</strong></td>
             <td>Captured during call</td>
             <td>Lead identification</td>
-            <td>Until deletion request or contract end</td>
+            <td><strong>180 days</strong>, then auto-deleted</td>
           </tr>
           <tr>
             <td><strong>Caller phone number</strong></td>
-            <td>Caller-provided or Twilio CLI</td>
+            <td>Caller-provided or Twilio Caller ID</td>
             <td>Callback &amp; lead record</td>
-            <td>Until deletion request or contract end</td>
+            <td><strong>180 days</strong>, then auto-deleted</td>
           </tr>
           <tr>
             <td><strong>Call reason / message</strong></td>
             <td>Captured during call</td>
             <td>Lead qualification &amp; SMS summary</td>
-            <td>Until deletion request or contract end</td>
+            <td><strong>180 days</strong>, then auto-deleted</td>
           </tr>
           <tr>
             <td><strong>Call recording (audio)</strong></td>
@@ -161,7 +159,7 @@
             <p style="font-size:0.8rem;color:var(--grey-text);margin:0;">openai.com &nbsp;|&nbsp; United States (data processing agreement in place)</p>
           </div>
         </div>
-        <p style="font-size:0.9rem;color:var(--grey-text);margin:0;"><strong>Purpose:</strong> Intent classification only — used to understand the caller's reason for calling and urgency level. We do not send full call content or personal identifiers to OpenAI. OpenAI does not use API data to train models.</p>
+        <p style="font-size:0.9rem;color:var(--grey-text);margin:0;"><strong>Purpose:</strong> Intent classification and field extraction — used to understand the caller's reason for calling and urgency level, and to extract structured information (name, callback number, call reason) from the caller's spoken responses. Before any text is sent to OpenAI, phone numbers and email addresses are automatically stripped and replaced with placeholder tokens (e.g. <code>[PHONE]</code>). Phone numbers are extracted locally using regex first; OpenAI is only used as a fallback. Caller name is the only personal identifier that may be sent to OpenAI. OpenAI does not use API data to train models. All transfers are covered by OpenAI's Data Processing Agreement and UK GDPR standard contractual clauses.</p>
       </div>
 
       <div style="background:white;border:1px solid var(--grey-mid);border-radius:12px;padding:24px 28px;">
@@ -206,7 +204,7 @@
       <div class="feature-card">
         <div class="feature-icon">🕐</div>
         <h3>Automatic data deletion</h3>
-        <p>Call recordings are automatically deleted after 60 days. Call transcripts are automatically deleted after 60 days. No manual step required.</p>
+        <p>A scheduled job runs every 6 hours and automatically nulls call recording links and transcripts after 60 days, deletes lead records after 180 days, and deletes call metadata after 90 days. Every run is logged to a cleanup audit table. No manual step required.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📋</div>
@@ -272,7 +270,7 @@
     </div>
 
     <div style="margin-top:24px;">
-      <p style="font-size:0.9rem;color:var(--grey-text);">For business clients requiring a formal Data Processing Addendum (DPA) for their own GDPR compliance, please contact us and we will provide one. See also our full <a href="privacy.html">Privacy Policy</a>.</p>
+      <p style="font-size:0.9rem;color:var(--grey-text);">A Data Processing Addendum (DPA) is provided to every business client as a standard part of onboarding — not just on request. Because we process personal data (caller information) on behalf of our clients, a signed DPA is required before the service goes live. You can <a href="dpa.html">read our standard DPA here</a>. See also our full <a href="privacy.html">Privacy Policy</a>.</p>
     </div>
   </div>
 </section>
@@ -304,6 +302,7 @@
           <li><a href="cookies.html">Cookie Policy</a></li>
           <li><a href="terms.html">Terms of Service</a></li>
           <li><a href="aup.html">Acceptable Use</a></li>
+          <li><a href="dpa.html">Data Processing Addendum</a></li>
         </ul>
       </div>
     </div>
