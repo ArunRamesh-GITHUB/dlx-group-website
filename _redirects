@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects
+# NOTE: Do NOT add redirects from /page to /page.html here.
+# Cloudflare Pages automatically serves page.html at /page (pretty URLs).
+# Adding those rules creates redirect loops.
+
+# Redirect bare /index to root
+/index  /  301
