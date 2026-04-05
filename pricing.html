@@ -8,6 +8,17 @@
   <!-- Fonts: Inter loaded from system/local where available; fallback to system-ui stack in CSS -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563eb'/><text x='6' y='23' font-family='Arial' font-weight='900' font-size='18' fill='white'>D</text></svg>" />
+  <style>
+    .roi-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 540px) {
+      .roi-cols { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -204,7 +215,7 @@
     <p class="section-sub section-sub-light" style="margin-bottom:32px;">This is a rough illustrative example only — actual results will vary depending on your business, conversion rates, and market.</p>
 
     <div style="background:rgba(255,255,255,0.07);border-radius:16px;padding:32px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
+      <div class="roi-cols">
         <div>
           <p style="color:rgba(255,255,255,0.5);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Without AI Receptionist</p>
           <ul style="list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px;">

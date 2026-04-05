@@ -1005,6 +1005,11 @@ footer {
 .text-small { font-size: 0.8rem; color: var(--grey-text); }
 .text-muted { color: var(--grey-text); }
 
+/* ---- GLOBAL MOBILE SAFETY ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; max-width: 100%; }
+img, video, iframe, table { max-width: 100%; }
+
 /* ---- NEW PAGE COMPONENTS ---- */
 
 /* Section eyebrow label */
@@ -1236,4 +1241,64 @@ footer {
 }
 .value-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
 .value-item p { font-size: 0.875rem; color: var(--grey-text); margin: 0; line-height: 1.6; }
+
+/* ---- COMPREHENSIVE MOBILE BREAKPOINTS ---- */
+
+/* Small phones — stack buttons and expand touch targets */
+@media (max-width: 480px) {
+  .btn { min-height: 48px; font-size: 0.9rem; padding: 13px 22px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .cta-buttons .btn { width: 100%; max-width: 320px; justify-content: center; }
+  .section { padding: 48px 16px; }
+}
+
+/* Tablet and narrow desktop */
+@media (max-width: 640px) {
+  /* Nav */
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  /* Section headings */
+  .section-title { font-size: 1.6rem; }
+  .hero h1 { font-size: 1.9rem; }
+
+  /* Grids collapse to 1 column */
+  .pain-grid { grid-template-columns: 1fr; }
+  .does-grid { grid-template-columns: 1fr; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .industries-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Solutions page */
+  .solution-row { grid-template-columns: 1fr; gap: 24px; }
+  .solution-meta { position: static; }
+
+  /* How it works steps in style.css context */
+  .steps { max-width: 100%; }
+  .step { flex-direction: row; }
+
+  /* Footer */
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-top > div:first-child { grid-column: 1 / -1; }
+
+  /* Pricing table — allow horizontal scroll */
+  .table-wrap { -webkit-overflow-scrolling: touch; }
+
+  /* Reduced whitespace in cards */
+  .feature-card,
+  .system-card,
+  .leak-card,
+  .pain-item,
+  .pricing-card { padding: 20px 18px; }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .metrics-grid { grid-template-columns: 1fr; }
+  .industries-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .nav-logo { font-size: 16px; }
+  .logo-mark { width: 30px; height: 30px; font-size: 11px; }
+}
 
