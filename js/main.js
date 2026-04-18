@@ -105,4 +105,92 @@
       form.style.display = 'none';
     }
   });
+
+})();
+
+// ---- Nav shadow on scroll ----
+(function () {
+  var navEl = document.querySelector('nav');
+  if (!navEl) return;
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 10) {
+      navEl.classList.add('nav-scrolled');
+    } else {
+      navEl.classList.remove('nav-scrolled');
+    }
+  }, { passive: true });
+})();
+
+// ---- Scroll-triggered animations ----
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Section text elements (exclude hero — it uses CSS keyframes instead)
+  var textSelectors = [
+    '.section .section-eyebrow',
+    '.section .section-title',
+    '.section h2',
+    '.section .section-sub',
+    '.cta-section h2',
+    '.cta-section p',
+    '.solution-meta h3',
+    '.solution-meta p',
+    '.usp-content h2',
+    '.usp-content p',
+    '.hero-inner > div > h1',  // handled by index.html css, skip
+  ];
+
+  textSelectors.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      if (!el.closest('.hero') && !el.classList.contains('anim-up')) {
+        el.classList.add('anim-up');
+      }
+    });
+  });
+
+  // Grid / list children — staggered entrance
+  var gridSelectors = [
+    '.services-grid',
+    '.systems-grid',
+    '.leak-grid',
+    '.feature-grid',
+    '.industries-grid',
+    '.metrics-grid',
+    '.pain-grid',
+    '.stat-grid',
+    '.include-grid',
+    '.outcomes-list',
+    '.value-list',
+    '.steps',
+    '.does-grid',
+    '.pricing-grid',
+    '.usp-cards',
+    '.footer-top > div',
+  ];
+
+  gridSelectors.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (container) {
+      Array.from(container.children).forEach(function (child, i) {
+        if (!child.classList.contains('anim-up')) {
+          child.classList.add('anim-up');
+          child.style.transitionDelay = Math.min(i * 0.08, 0.48) + 's';
+        }
+      });
+    });
+  });
+
+  // Observe everything
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+  document.querySelectorAll('.anim-up').forEach(function (el) {
+    observer.observe(el);
+  });
 })();

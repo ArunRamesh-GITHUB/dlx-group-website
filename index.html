@@ -450,6 +450,47 @@
     @media (max-width: 380px) {
       .industries-grid { grid-template-columns: 1fr; }
     }
+
+    /* ============================================================
+       PREMIUM ANIMATIONS — index.html
+       ============================================================ */
+
+    @keyframes dlxSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* Hero entrance — staggered per element */
+    .hero-eyebrow { animation: dlxSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both; }
+    .hero h1      { animation: dlxSlideUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both; }
+    .hero-sub     { animation: dlxSlideUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.30s both; }
+    .hero-buttons { animation: dlxSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both; }
+    .hero-trust   { animation: dlxSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.54s both; }
+    .hero-visual  { animation: dlxSlideUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
+
+    /* Scroll-triggered class (added by JS) */
+    .anim-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+    .anim-up.in-view { opacity: 1; transform: none; }
+
+    /* Nav scrolled shadow */
+    nav.nav-scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.25); }
+
+    /* Button press */
+    .btn:active { transform: scale(0.97) !important; }
+
+    /* Reduced motion — disable all */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-eyebrow, .hero h1, .hero-sub, .hero-buttons, .hero-trust, .hero-visual {
+        animation: none !important;
+      }
+      .anim-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -973,6 +1014,48 @@
   var r = document.getElementById('cookieReject');
   if(a){ a.addEventListener('click', function(){ set('accepted'); banner.classList.remove('show'); }); }
   if(r){ r.addEventListener('click', function(){ set('rejected'); banner.classList.remove('show'); }); }
+})();
+
+// Nav shadow on scroll
+(function(){
+  var nav = document.querySelector('nav');
+  if(!nav) return;
+  window.addEventListener('scroll', function(){ nav.classList.toggle('nav-scrolled', window.scrollY > 10); }, { passive: true });
+})();
+
+// Scroll-triggered entrance animations
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Text headings and labels
+  ['h2', '.section-eyebrow', '.muted'].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      if(!el.closest('.hero') && !el.classList.contains('anim-up')) el.classList.add('anim-up');
+    });
+  });
+
+  // Stagger grid/list children
+  ['.leak-grid', '.systems-grid', '.industries-grid', '.metrics-grid',
+   '.outcomes-list', '.steps', '.usp-cards', '.proof-inner'].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(container){
+      Array.from(container.children).forEach(function(child, i){
+        if(!child.classList.contains('anim-up')){
+          child.classList.add('anim-up');
+          child.style.transitionDelay = Math.min(i * 0.08, 0.48) + 's';
+        }
+      });
+    });
+  });
+
+  // Observe
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('in-view'); obs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+  document.querySelectorAll('.anim-up').forEach(function(el){ obs.observe(el); });
 })();
 </script>
 </body>
