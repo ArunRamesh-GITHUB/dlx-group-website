@@ -2,19 +2,36 @@
 
 // ---- Mobile nav ----
 (function () {
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', function () {
-      mobileMenu.classList.toggle('open');
-    });
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (!hamburger || !mobileMenu) return;
+
+  function toggle(e) {
+    e.preventDefault();
+    var isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   }
 
+  hamburger.addEventListener('click', toggle);
+  hamburger.addEventListener('touchend', function (e) {
+    e.preventDefault();
+    toggle(e);
+  }, { passive: false });
+
+  mobileMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
   // Highlight active nav link
-  const links = document.querySelectorAll('.nav-links a, .mobile-menu a');
-  const current = window.location.pathname.split('/').pop() || 'index.html';
+  var links = document.querySelectorAll('.nav-links a, .mobile-menu a');
+  var current = window.location.pathname.split('/').pop() || 'index.html';
   links.forEach(function (link) {
-    const href = link.getAttribute('href');
+    var href = link.getAttribute('href');
     if (href === current || (current === '' && href === 'index.html')) {
       link.classList.add('active');
     }
@@ -192,5 +209,39 @@
 
   document.querySelectorAll('.anim-up').forEach(function (el) {
     observer.observe(el);
+  });
+})();
+
+// ---- Counter animation for stat/metric numbers ----
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function animCount(el) {
+    var original = el.textContent.trim();
+    var num = parseFloat(original.replace(/[^0-9.]/g, ''));
+    if (isNaN(num) || num === 0) return;
+    var prefix = original.match(/^[^0-9]*/)[0];
+    var suffix = original.replace(/^[^0-9]*[0-9.,]+/, '');
+    var dur = 1400; var t0 = null;
+    function ease(x) { return 1 - Math.pow(1 - x, 3); }
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var v = ease(p) * num;
+      el.textContent = prefix + (Number.isInteger(num) ? Math.round(v) : v.toFixed(1)) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var cObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { animCount(entry.target); cObs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.metric-big, .stat-num').forEach(function (el) {
+    cObs.observe(el);
   });
 })();

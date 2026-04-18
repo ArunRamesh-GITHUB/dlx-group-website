@@ -106,15 +106,25 @@
     .nav-links .nav-cta:hover { background: var(--brand-dark) !important; }
     .nav-hamburger {
       display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; background: none; border: none; padding: 4px;
+      cursor: pointer; background: none; border: none;
+      padding: 11px; min-width: 44px; min-height: 44px;
+      align-items: center; justify-content: center;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none; -webkit-user-select: none;
+      position: relative; z-index: 102;
     }
     .nav-hamburger span {
       display: block; width: 22px; height: 2px;
       background: var(--dark); border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .mobile-menu {
-      display: none; position: fixed; inset: 0; top: 68px;
-      background: #fff; z-index: 99; padding: 24px;
+      display: none; position: fixed; left: 0; right: 0; top: 68px; bottom: 0;
+      background: #fff; z-index: 101; padding: 24px;
       flex-direction: column; gap: 4px;
       border-top: 1px solid var(--border);
       overflow-y: auto;
@@ -242,7 +252,7 @@
     }
 
     /* LEAK CARDS */
-    .leak-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
+    .leak-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 48px; }
     .leak-card {
       background: #fff; border: 1px solid var(--border);
       border-radius: var(--radius-lg); padding: 28px;
@@ -259,7 +269,7 @@
     }
 
     /* SYSTEM CARDS */
-    .systems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 48px; }
+    .systems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
     .system-card {
       background: #fff; border: 1px solid var(--border);
       border-radius: var(--radius-lg); padding: 28px;
@@ -315,7 +325,7 @@
     @media (max-width: 700px) { .steps { grid-template-columns: 1fr; } .steps::before { display: none; } }
 
     /* INDUSTRIES */
-    .industries-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-top: 48px; }
+    .industries-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 48px; }
     .industry-item {
       background: #fff; border: 1px solid var(--border);
       border-radius: var(--radius); padding: 20px 16px;
@@ -422,7 +432,18 @@
 
     @media (max-width: 768px) { .section { padding: 72px 0; } }
 
-    /* ── MOBILE FIXES ── */
+    /* ── RESPONSIVE GRID BREAKPOINTS ── */
+    @media (max-width: 1100px) {
+      /* 5-col leak → 3-col with last 2 centered via flex */
+      .leak-grid { display: flex; flex-wrap: wrap; justify-content: center; }
+      .leak-card { flex: 1 1 calc(33.333% - 14px); max-width: calc(33.333% - 14px); min-width: 220px; }
+    }
+    @media (max-width: 860px) {
+      /* Systems 3→2 cols */
+      .systems-grid { grid-template-columns: repeat(2, 1fr); }
+      /* Industries 5→3 */
+      .industries-grid { grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 640px) {
       .hero { padding: 64px 0 48px; }
       .hero h1 { font-size: clamp(28px, 8vw, 42px); }
@@ -430,7 +451,9 @@
       .hero-buttons { flex-direction: column; align-items: stretch; }
       .hero-buttons .btn { width: 100%; justify-content: center; }
       .hero-trust { gap: 12px; }
-      .leak-grid, .systems-grid { grid-template-columns: 1fr; }
+      .systems-grid { grid-template-columns: 1fr; }
+      .leak-grid { display: grid; grid-template-columns: 1fr; }
+      .leak-card { max-width: none; }
       .industries-grid { grid-template-columns: repeat(2, 1fr); }
       .metrics-grid { grid-template-columns: 1fr 1fr; }
       .usp-section { padding: 64px 0; }
@@ -442,13 +465,12 @@
       .outcomes-list li { padding: 12px 16px; }
     }
     @media (max-width: 480px) {
-      .industries-grid { grid-template-columns: 1fr 1fr; }
       .metrics-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr !important; }
       .btn { min-height: 48px; }
     }
     @media (max-width: 380px) {
-      .industries-grid { grid-template-columns: 1fr; }
+      .industries-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* ============================================================
@@ -468,6 +490,59 @@
     .hero-trust   { animation: dlxSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.54s both; }
     .hero-visual  { animation: dlxSlideUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
 
+    /* Animated gradient on hero h1 accent word */
+    @keyframes gradientFlow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero h1 em {
+      background: linear-gradient(90deg, var(--brand) 0%, #0ea5e9 40%, #8b5cf6 70%, var(--brand) 100%);
+      background-size: 300% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      animation: dlxSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.16s both,
+                 gradientFlow 4s ease infinite 0.81s;
+    }
+
+    /* Floating stat badge (mirrors float-notif) */
+    @keyframes floatStat {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    .float-stat { animation: floatStat 4s ease-in-out 1.5s infinite; }
+
+    /* Hero blob ambient drift */
+    @keyframes blobDrift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33%       { transform: translate(-20px, 15px) scale(1.04); }
+      66%       { transform: translate(15px, -10px) scale(0.97); }
+    }
+    .hero::before { animation: blobDrift 12s ease-in-out infinite; }
+
+    /* Shimmer sweep on card hover */
+    .leak-card, .system-card, .usp-card { position: relative; overflow: hidden; }
+    .leak-card::after, .system-card::after, .usp-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.55) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: transform 0s;
+      pointer-events: none;
+    }
+    .leak-card:hover::after, .system-card:hover::after, .usp-card:hover::after {
+      transform: translateX(100%);
+      transition: transform 0.55s ease;
+    }
+
+    /* Icon pop on card hover */
+    .leak-icon, .system-icon { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); display: inline-block; }
+    .leak-card:hover .leak-icon, .system-card:hover .system-icon { transform: scale(1.2) rotate(6deg); }
+
+    /* Enhanced card hover glow */
+    .leak-card:hover { box-shadow: 0 8px 28px rgba(26,86,219,0.14); border-color: #c7d7fd; transform: translateY(-3px); }
+    .system-card:hover { box-shadow: 0 8px 28px rgba(26,86,219,0.14); }
+
     /* Scroll-triggered class (added by JS) */
     .anim-up {
       opacity: 0;
@@ -486,10 +561,11 @@
 
     /* Reduced motion — disable all */
     @media (prefers-reduced-motion: reduce) {
-      .hero-eyebrow, .hero h1, .hero-sub, .hero-buttons, .hero-trust, .hero-visual {
-        animation: none !important;
-      }
+      .hero-eyebrow, .hero h1, .hero h1 em, .hero-sub, .hero-buttons, .hero-trust, .hero-visual,
+      .float-stat, .hero::before { animation: none !important; }
+      .hero h1 em { background: none; -webkit-text-fill-color: var(--brand); color: var(--brand); }
       .anim-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .leak-card::after, .system-card::after, .usp-card::after { display: none; }
     }
   </style>
 </head>
@@ -1001,7 +1077,23 @@
 (function(){
   var h = document.getElementById('hamburger');
   var m = document.getElementById('mobileMenu');
-  if(h && m){ h.addEventListener('click', function(){ m.classList.toggle('open'); }); }
+  if(!h || !m) return;
+  function toggle(e){
+    e.preventDefault();
+    var isOpen = m.classList.toggle('open');
+    h.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+  h.addEventListener('click', toggle);
+  h.addEventListener('touchend', function(e){ e.preventDefault(); toggle(e); }, { passive: false });
+  // Close on link tap
+  m.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      m.classList.remove('open');
+      h.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
 })();
 (function(){
   var banner = document.getElementById('cookieBanner');
@@ -1021,6 +1113,34 @@
   var nav = document.querySelector('nav');
   if(!nav) return;
   window.addEventListener('scroll', function(){ nav.classList.toggle('nav-scrolled', window.scrollY > 10); }, { passive: true });
+})();
+
+// Counter animation for metric cards
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function animCount(el){
+    var original = el.textContent.trim();
+    var num = parseFloat(original.replace(/[^0-9.]/g,''));
+    if(isNaN(num) || num === 0) return;
+    var prefix = original.match(/^[^0-9]*/)[0];
+    var suffix = original.replace(/^[^0-9]*[0-9.,]+/,'');
+    var start = 0; var dur = 1400; var t0 = null;
+    function ease(x){ return 1 - Math.pow(1-x, 3); }
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts-t0)/dur, 1);
+      var v = ease(p) * num;
+      el.textContent = prefix + (Number.isInteger(num) ? Math.round(v) : v.toFixed(1)) + suffix;
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ animCount(e.target); counterObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.metric-big').forEach(function(el){ counterObs.observe(el); });
 })();
 
 // Scroll-triggered entrance animations
