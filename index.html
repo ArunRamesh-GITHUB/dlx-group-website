@@ -143,15 +143,22 @@
 
     /* HERO */
     .hero {
-      background: linear-gradient(155deg, #eef2ff 0%, #f8fafc 55%, #ffffff 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 55%, #1a56db 100%);
       padding: 100px 0 88px;
       position: relative; overflow: hidden;
     }
     .hero::before {
       content: '';
-      position: absolute; top: -120px; right: -180px;
+      position: absolute; top: -160px; right: -160px;
       width: 640px; height: 640px;
-      background: radial-gradient(circle, rgba(26,86,219,.07) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(14,165,233,.15) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(26,86,219,.12) 0%, transparent 65%);
       border-radius: 50%;
     }
     .hero-inner {
@@ -160,29 +167,30 @@
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--brand-light); color: var(--brand);
+      background: rgba(255,255,255,.12); color: #93c5fd;
+      border: 1px solid rgba(255,255,255,.15);
       font-size: 13px; font-weight: 600; padding: 6px 14px;
       border-radius: 100px; margin-bottom: 24px;
     }
     .hero-eyebrow::before {
       content: ''; width: 7px; height: 7px;
-      background: var(--brand); border-radius: 50%;
+      background: #60a5fa; border-radius: 50%;
       animation: pulse 2s infinite;
     }
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: .5; transform: scale(1.4); }
     }
-    .hero h1 { margin-bottom: 22px; }
-    .hero h1 em { font-style: normal; color: var(--brand); }
-    .hero-sub { font-size: 18px; color: var(--mid); margin-bottom: 36px; max-width: 520px; line-height: 1.7; }
+    .hero h1 { margin-bottom: 22px; color: #fff; }
+    .hero h1 em { font-style: normal; }
+    .hero-sub { font-size: 18px; color: rgba(255,255,255,.75); margin-bottom: 36px; max-width: 520px; line-height: 1.7; }
     .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
     .hero-trust {
       display: flex; flex-wrap: wrap; gap: 20px;
-      font-size: 13px; color: var(--muted); margin-top: 4px;
+      font-size: 13px; color: rgba(255,255,255,.55); margin-top: 4px;
     }
     .hero-trust-item { display: flex; align-items: center; gap: 6px; }
-    .hero-trust-item::before { content: '✓'; color: var(--brand); font-weight: 700; }
+    .hero-trust-item::before { content: '✓'; color: #86efac; font-weight: 700; }
 
     /* Hero dashboard visual */
     .hero-visual { position: relative; }
@@ -240,16 +248,16 @@
     .dash-btn-secondary { background: var(--bg-alt); color: var(--mid); border: 1px solid var(--border); }
     .float-stat {
       position: absolute; top: -20px; left: -20px;
-      background: var(--brand); color: #fff;
-      border-radius: var(--radius); padding: 12px 18px;
-      box-shadow: 0 8px 24px rgba(26,86,219,.3);
+      background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%); color: #fff;
+      border-radius: var(--radius); padding: 14px 20px;
+      box-shadow: 0 8px 32px rgba(26,86,219,.5);
     }
-    .stat-num { font-size: 22px; font-weight: 800; }
-    .stat-label { font-size: 11px; opacity: .8; }
+    .stat-num { font-size: 24px; font-weight: 900; letter-spacing: -.02em; }
+    .stat-label { font-size: 11px; opacity: .85; margin-top: 1px; }
     .float-notif {
       position: absolute; bottom: -24px; right: -24px;
       background: #fff; border-radius: var(--radius);
-      box-shadow: var(--shadow-lg); padding: 14px 18px;
+      box-shadow: 0 16px 48px rgba(0,0,0,.18); padding: 14px 18px;
       display: flex; align-items: center; gap: 12px;
       min-width: 220px; border: 1px solid var(--border);
       animation: floatUp 3s ease-in-out infinite;
@@ -261,13 +269,13 @@
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
       .hero-visual { display: none; }
-      .hero { padding: 80px 0 64px; }
+      .hero { padding: 72px 0 60px; }
     }
 
     /* PROOF BAR */
-    .proof-bar { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 24px 0; }
+    .proof-bar { background: #0c1524; border-bottom: 1px solid rgba(255,255,255,.08); padding: 20px 0; }
     .proof-inner { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 32px; }
-    .proof-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--muted); }
+    .proof-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.45); }
 
     /* SECTION HEADERS */
     .section-eyebrow {
@@ -504,7 +512,7 @@
       100% { background-position: 0% 50%; }
     }
     .hero h1 em {
-      background: linear-gradient(90deg, var(--brand) 0%, #0ea5e9 40%, #8b5cf6 70%, var(--brand) 100%);
+      background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 40%, #38bdf8 70%, #60a5fa 100%);
       background-size: 300% 100%;
       -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent; color: transparent;
@@ -557,7 +565,7 @@
     @media (prefers-reduced-motion: reduce) {
       .hero-eyebrow, .hero h1, .hero h1 em, .hero-sub, .hero-buttons, .hero-trust, .hero-visual,
       .float-stat, .hero::before { animation: none !important; }
-      .hero h1 em { background: none; -webkit-text-fill-color: var(--brand); color: var(--brand); }
+      .hero h1 em { background: none; -webkit-text-fill-color: #60a5fa; color: #60a5fa; }
       .anim-up { opacity: 1 !important; transform: none !important; transition: none !important; }
       .feature-card::after, .problem-card::after, .usp-card::after { display: none; }
     }
@@ -606,8 +614,8 @@
           DLX Solutions helps local businesses find missed follow-ups, overdue reminders, old quotes, inactive customers, and repeat-service opportunities hiding inside their existing customer records.
         </p>
         <div class="hero-buttons">
-          <a href="contact.html" class="btn btn-primary btn-lg">Get a Free Customer Revenue Audit</a>
-          <a href="#how-it-works" class="btn btn-outline btn-lg">See How It Works</a>
+          <a href="contact.html" class="btn btn-white btn-lg">Get a Free Customer Revenue Audit</a>
+          <a href="#how-it-works" class="btn btn-ghost-white btn-lg">See How It Works</a>
         </div>
         <div class="hero-trust">
           <span class="hero-trust-item">No new ads needed</span>

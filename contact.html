@@ -4,30 +4,174 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Book a Free Customer Revenue Audit — DLX Solutions</title>
-  <meta name="description" content="Book a free Customer Revenue Audit with DLX Solutions. We'll review your customer data and show you the missed follow-ups, overdue reminders, and repeat-service opportunities hiding inside it." />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Book a free Customer Revenue Audit. We'll review your customer data and show you the revenue opportunities hiding inside it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a56db'/><text x='5' y='23' font-family='Arial' font-weight='900' font-size='18' fill='white'>D</text></svg>" />
   <style>
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-      max-width: 960px;
-      margin: 0 auto;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand: #1a56db;
+      --brand-dark: #1340b0;
+      --brand-light: #e8f0fd;
+      --accent: #0ea5e9;
+      --dark: #0f172a;
+      --mid: #334155;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --bg-dark: #0f172a;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+      --shadow: 0 4px 16px rgba(0,0,0,.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,.12);
     }
-    @media (max-width: 768px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--dark); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    h1, h2, h3 { line-height: 1.2; font-weight: 800; }
+    p { color: var(--mid); font-size: 16px; line-height: 1.7; }
+    a { color: var(--brand); }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .nav-logo { font-size: 19px; font-weight: 800; color: var(--dark); text-decoration: none; letter-spacing: -.02em; display: flex; align-items: center; gap: 10px; }
+    .logo-mark { width: 34px; height: 34px; background: var(--brand); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; color: #fff; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { color: var(--mid); font-size: 14px; font-weight: 500; text-decoration: none; padding: 7px 12px; border-radius: 8px; transition: color .15s, background .15s; }
+    .nav-links a:hover { color: var(--brand); background: var(--brand-light); }
+    .nav-links .nav-cta { background: var(--brand); color: #fff !important; padding: 8px 18px !important; border-radius: 8px; font-weight: 600 !important; margin-left: 8px; }
+    .nav-links .nav-cta:hover { background: var(--brand-dark) !important; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 11px; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; z-index: 102; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; left: 0; right: 0; top: 68px; bottom: 0; background: #fff; z-index: 101; padding: 24px; flex-direction: column; gap: 4px; border-top: 1px solid var(--border); overflow-y: auto; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 16px; font-weight: 500; color: var(--dark); text-decoration: none; padding: 13px 0; border-bottom: 1px solid var(--border); }
+    .mobile-menu .mobile-cta { margin-top: 20px; background: var(--brand); color: #fff; border-radius: var(--radius); padding: 14px; text-align: center; font-weight: 600; font-size: 15px; border-bottom: none; }
+    @media (max-width: 860px) { .nav-links { display: none; } .nav-hamburger { display: flex; } }
+
+    /* HERO */
+    .page-hero {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #1e3a5f 100%);
+      padding: 72px 0 64px;
+      position: relative; overflow: hidden;
     }
+    .page-hero::before {
+      content: ''; position: absolute; top: -160px; right: -160px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(26,86,219,.18) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+    .page-hero-inner { position: relative; z-index: 1; }
+    .hero-label { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #93c5fd; margin-bottom: 16px; }
+    .page-hero h1 { color: #fff; font-size: clamp(28px, 5vw, 48px); letter-spacing: -.02em; margin-bottom: 16px; }
+    .page-hero p { color: rgba(255,255,255,.72); font-size: 18px; max-width: 520px; }
+
+    /* MAIN LAYOUT */
+    .contact-section { padding: 72px 0 96px; }
+    .contact-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+    @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+    /* INFO SIDE */
+    .info-card { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 20px; }
+    .info-card h3 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 16px; }
+    .step-row { display: flex; gap: 14px; margin-bottom: 18px; }
+    .step-row:last-child { margin-bottom: 0; }
+    .step-dot { width: 32px; height: 32px; background: var(--brand-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--brand); flex-shrink: 0; }
+    .step-text strong { font-size: 14px; font-weight: 600; color: var(--dark); display: block; margin-bottom: 2px; }
+    .step-text p { font-size: 13px; color: var(--muted); margin: 0; }
+    .contact-direct { background: var(--bg-dark); border-radius: var(--radius-lg); padding: 24px; color: rgba(255,255,255,.8); }
+    .contact-direct h3 { color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+    .contact-direct a { color: #93c5fd; text-decoration: none; font-size: 14px; font-weight: 500; }
+    .contact-direct p { color: rgba(255,255,255,.5); font-size: 12px; margin-top: 8px; }
+
+    /* FORM */
+    .form-wrap { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow); }
+    @media (max-width: 480px) { .form-wrap { padding: 24px 20px; } }
+    .form-title { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: 13px; font-weight: 600; color: var(--dark); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: inherit; font-size: 15px; color: var(--dark);
+      background: var(--bg-alt); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 12px 14px;
+      transition: border-color .15s, box-shadow .15s;
+      outline: none; width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(26,86,219,.1); background: #fff; }
+    .form-group input.error,
+    .form-group select.error { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,.08); }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .form-note { font-size: 12px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+    .form-note a { color: var(--brand); }
+
+    /* SUBMIT BUTTON */
+    .btn-submit {
+      width: 100%; padding: 16px; background: var(--brand); color: #fff;
+      border: none; border-radius: var(--radius); font-family: inherit;
+      font-size: 16px; font-weight: 700; cursor: pointer; letter-spacing: -.01em;
+      transition: background .18s, transform .15s, box-shadow .18s;
+      box-shadow: 0 4px 14px rgba(26,86,219,.3);
+    }
+    .btn-submit:hover { background: var(--brand-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,86,219,.4); }
+    .btn-submit:active { transform: scale(0.98); }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* ERROR BANNER */
+    .form-error-msg { display: none; background: #fef2f2; border: 1px solid #fecaca; border-radius: var(--radius); padding: 14px 18px; margin-bottom: 20px; font-size: 14px; color: #dc2626; }
+
+    /* SUCCESS STATE */
+    .form-success {
+      display: none; text-align: center; padding: 56px 32px;
+      background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+      border: 1px solid #bbf7d0; border-radius: var(--radius-lg);
+    }
+    .success-icon { font-size: 48px; margin-bottom: 16px; display: block; }
+    .form-success h3 { font-size: 22px; font-weight: 800; color: #15803d; margin-bottom: 10px; }
+    .form-success p { font-size: 15px; color: #374151; max-width: 340px; margin: 0 auto; }
+
+    /* FOOTER */
+    footer { background: var(--bg-dark); color: rgba(255,255,255,.65); padding: 48px 0 28px; }
+    .footer-bottom-simple { border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; }
+    .footer-bottom-simple p { font-size: 13px; color: rgba(255,255,255,.35); margin-bottom: 4px; }
+    .footer-legal-links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; }
+    .footer-legal-links a { font-size: 12px; color: rgba(255,255,255,.35); text-decoration: none; transition: color .15s; }
+    .footer-legal-links a:hover { color: rgba(255,255,255,.65); }
+    .footer-brand-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; text-decoration: none; }
+    .footer-brand-row span { font-size: 17px; font-weight: 800; color: #fff; }
+
+    /* COOKIE BANNER */
+    .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,.1); padding: 16px 24px; display: none; }
+    .cookie-banner.show { display: block; }
+    .cookie-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: space-between; }
+    .cookie-text { font-size: 13px; color: rgba(255,255,255,.7); }
+    .cookie-text a { color: #60a5fa; }
+    .cookie-actions { display: flex; gap: 10px; }
+    .cookie-btn { font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 8px; cursor: pointer; border: none; }
+    .cookie-accept { background: var(--brand); color: #fff; }
+    .cookie-reject { background: rgba(255,255,255,.08); color: rgba(255,255,255,.7); }
+
+    nav.nav-scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
       <span class="logo-mark">DLX</span>
@@ -39,158 +183,159 @@
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#industries">Industries</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" class="nav-cta active">Book Free Audit</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Free Audit</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="index.html#how-it-works">How It Works</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#industries">Industries</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Book a Free Customer Revenue Audit</a>
-  </div>
 </nav>
 
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="index.html#how-it-works">How It Works</a>
+  <a href="index.html#services">Services</a>
+  <a href="index.html#industries">Industries</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" class="mobile-cta">Book a Free Customer Revenue Audit</a>
+</div>
+
 <!-- HERO -->
-<section style="background:#0f172a;padding:56px 24px 48px;color:white;">
+<section class="page-hero">
   <div class="container">
-    <div style="display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#93c5fd;margin-bottom:14px;">Get Started — Free</div>
-    <h1 style="color:white;font-size:clamp(28px,4.5vw,48px);font-weight:800;letter-spacing:-.02em;margin-bottom:16px;">Book a Free Customer Revenue Audit</h1>
-    <p style="color:rgba(255,255,255,.72);font-size:18px;max-width:560px;line-height:1.7;">We will review a sample of your customer data and show you the missed follow-ups, overdue reminders, old quotes, and repeat-service opportunities hiding inside it.</p>
+    <div class="page-hero-inner">
+      <div class="hero-label">Free — No Obligation</div>
+      <h1>Book Your Free Customer<br/>Revenue Audit</h1>
+      <p>We will look at your customer data and show you the opportunities hiding inside it — who to follow up, what to offer, and how much revenue is sitting there.</p>
+    </div>
   </div>
 </section>
 
-<!-- CONTACT SECTION -->
-<section class="section">
+<!-- CONTACT -->
+<section class="contact-section">
   <div class="container">
     <div class="contact-grid">
 
-      <!-- INFO -->
+      <!-- LEFT: INFO -->
       <div>
-        <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:24px;">What happens next</h2>
-        <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:36px;">
-          <div style="display:flex;gap:16px;">
-            <div style="width:36px;height:36px;background:#e8f0fd;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:#1a56db;flex-shrink:0;">1</div>
-            <div>
-              <strong style="font-size:0.95rem;">You fill in the form</strong>
-              <p style="font-size:0.875rem;color:#64748b;margin:4px 0 0;">Tell us about your business, your industry, and what customer data you currently have.</p>
+        <div class="info-card">
+          <h3>What happens after you submit</h3>
+          <div class="step-row">
+            <div class="step-dot">1</div>
+            <div class="step-text">
+              <strong>We review your submission</strong>
+              <p>We look at your business type, industry, and data situation before we speak.</p>
             </div>
           </div>
-          <div style="display:flex;gap:16px;">
-            <div style="width:36px;height:36px;background:#e8f0fd;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:#1a56db;flex-shrink:0;">2</div>
-            <div>
-              <strong style="font-size:0.95rem;">We get back to you within 1 business day</strong>
-              <p style="font-size:0.875rem;color:#64748b;margin:4px 0 0;">We will arrange a time to speak — usually a 20–30 minute call.</p>
+          <div class="step-row">
+            <div class="step-dot">2</div>
+            <div class="step-text">
+              <strong>We contact you within 1 business day</strong>
+              <p>We arrange a 20–30 min call at a time that works for you.</p>
             </div>
           </div>
-          <div style="display:flex;gap:16px;">
-            <div style="width:36px;height:36px;background:#e8f0fd;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:#1a56db;flex-shrink:0;">3</div>
-            <div>
-              <strong style="font-size:0.95rem;">Customer Revenue Audit</strong>
-              <p style="font-size:0.875rem;color:#64748b;margin:4px 0 0;">We review your customer data, identify the best revenue opportunities, and show you what a daily insights system could look like for your business.</p>
+          <div class="step-row">
+            <div class="step-dot">3</div>
+            <div class="step-text">
+              <strong>Your Customer Revenue Audit</strong>
+              <p>We review a sample of your data and show you the first opportunities your business could act on.</p>
             </div>
           </div>
-          <div style="display:flex;gap:16px;">
-            <div style="width:36px;height:36px;background:#e8f0fd;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:#1a56db;flex-shrink:0;">4</div>
-            <div>
-              <strong style="font-size:0.95rem;">We propose the right next step</strong>
-              <p style="font-size:0.875rem;color:#64748b;margin:4px 0 0;">If we can help, we will make a clear, no-obligation proposal. If we cannot, we will tell you honestly.</p>
+          <div class="step-row">
+            <div class="step-dot">4</div>
+            <div class="step-text">
+              <strong>A clear next step — if it makes sense</strong>
+              <p>If we can help, we will say so clearly. If not, we will tell you honestly.</p>
             </div>
           </div>
         </div>
 
-        <div style="background:var(--grey-light);border-radius:12px;padding:24px;">
-          <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:12px;">Direct contact</h3>
-          <p style="font-size:0.9rem;margin-bottom:8px;">
-            📧 <a href="mailto:support@dlxsolutions.co.uk" style="color:var(--blue);">support@dlxsolutions.co.uk</a>
-          </p>
-          <p style="font-size:0.8rem;color:var(--grey-text);margin:0;">We aim to respond within 1 business day (Mon–Fri).</p>
-        </div>
-
-        <div class="notice notice-warn mt-24">
-          <div class="notice-title">Not a physical office</div>
-          <p style="margin:0;font-size:0.85rem;">We operate online. Please contact us by email or via the form — we do not accept visitors at our registered office.</p>
+        <div class="contact-direct">
+          <h3>Prefer to reach out directly?</h3>
+          <a href="mailto:support@dlxsolutions.co.uk">support@dlxsolutions.co.uk</a>
+          <p>We respond within 1 business day, Mon–Fri.</p>
         </div>
       </div>
 
-      <!-- FORM -->
+      <!-- RIGHT: FORM -->
       <div>
-        <div id="formSuccess" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:36px;text-align:center;">
-          <div style="font-size:2.5rem;margin-bottom:12px;">✅</div>
-          <h3 style="font-weight:700;margin-bottom:8px;color:#15803d;">Message sent!</h3>
-          <p style="color:#374151;font-size:0.95rem;margin:0;">Thanks — we will be in touch within 1 business day to arrange your free Customer Revenue Audit.</p>
+        <div class="form-wrap">
+
+          <div class="form-success" id="formSuccess">
+            <span class="success-icon">✅</span>
+            <h3>Message received!</h3>
+            <p>We will be in touch within 1 business day to arrange your free Customer Revenue Audit.</p>
+          </div>
+
+          <div class="form-error-msg" id="formError">
+            Something went wrong. Please email us directly at <a href="mailto:support@dlxsolutions.co.uk">support@dlxsolutions.co.uk</a>
+          </div>
+
+          <form id="contactForm">
+            <div class="form-title">Tell us about your business</div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your name *</label>
+                <input type="text" id="name" name="name" placeholder="Sarah Smith" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="business">Business name *</label>
+                <input type="text" id="business" name="Business Name" placeholder="Smith Garage" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email address *</label>
+                <input type="email" id="email" name="email" placeholder="sarah@example.co.uk" required autocomplete="email" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="Phone" placeholder="07700 000000" autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="industry">Business type</label>
+                <select id="industry" name="Business Type">
+                  <option value="Car Garage">Car Garage</option>
+                  <option value="Trades / Home Services">Trades / Home Services</option>
+                  <option value="Salon or Barber">Salon or Barber</option>
+                  <option value="Dental Practice">Dental Practice</option>
+                  <option value="Clinic or Aesthetics">Clinic or Aesthetics</option>
+                  <option value="Lawn Care / Landscaping">Lawn Care / Landscaping</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="data">Customer data you have</label>
+                <select id="data" name="Customer Data">
+                  <option value="Spreadsheet / list">Spreadsheet or customer list</option>
+                  <option value="Booking system">Booking system or diary</option>
+                  <option value="CRM">CRM (HubSpot, Salesforce, etc.)</option>
+                  <option value="Invoices / job sheets">Invoices or job sheets</option>
+                  <option value="Not sure / it's messy">Not sure — it's a bit messy</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Anything else you'd like us to know</label>
+              <textarea id="message" name="message" placeholder="e.g. We run a busy garage, lots of customers who haven't been back in over a year. No system for reminders at the moment..."></textarea>
+            </div>
+
+            <p class="form-note">
+              By submitting you agree to us contacting you about our services. We handle your data in line with our <a href="privacy.html">Privacy Policy</a> and will never pass it to third parties for marketing.
+            </p>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              Book My Free Customer Revenue Audit →
+            </button>
+          </form>
+
         </div>
-
-        <div id="formError" style="display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px 20px;margin-bottom:16px;">
-          <p style="color:#dc2626;font-size:0.9rem;margin:0;">Something went wrong sending your message. Please email us directly at <a href="mailto:support@dlxsolutions.co.uk" style="color:#dc2626;font-weight:600;">support@dlxsolutions.co.uk</a></p>
-        </div>
-
-        <!--
-          SETUP: Get a free access key at https://web3forms.com
-          Enter your email there and paste the key into the input below.
-          Submissions will be forwarded straight to your inbox, no backend needed.
-        -->
-        <form id="contactForm" style="display:flex;flex-direction:column;gap:4px;">
-          <input type="hidden" name="access_key" value="PASTE_YOUR_WEB3FORMS_KEY_HERE" />
-          <input type="hidden" name="subject" value="New Customer Revenue Audit Request — DLX Solutions" />
-          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-
-          <div class="form-group">
-            <label for="name">Your name *</label>
-            <input type="text" id="name" name="name" placeholder="Sarah Smith" required />
-          </div>
-          <div class="form-group">
-            <label for="clinicName">Business name *</label>
-            <input type="text" id="clinicName" name="Business Name" placeholder="Smith Garage" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email address *</label>
-            <input type="email" id="email" name="email" placeholder="sarah@smithdental.co.uk" required />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone number</label>
-            <input type="tel" id="phone" name="Phone" placeholder="07700 000000" />
-          </div>
-          <div class="form-group">
-            <label for="website">Website (if you have one)</label>
-            <input type="text" id="website" name="Website" placeholder="www.smithdental.co.uk" />
-          </div>
-          <div class="form-group">
-            <label for="niche">Business type</label>
-            <select id="niche" name="Business Type">
-              <option value="Car Garage">Car Garage</option>
-              <option value="Trades / Home Services">Trades / Home Services</option>
-              <option value="Salon or Barber">Salon or Barber</option>
-              <option value="Dental Practice">Dental Practice</option>
-              <option value="Clinic or Aesthetics">Clinic or Aesthetics</option>
-              <option value="Lawn Care / Landscaping">Lawn Care / Landscaping</option>
-              <option value="Other">Other (tell us below)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="data">What customer data do you currently have?</label>
-            <select id="data" name="Customer Data">
-              <option value="Spreadsheet or list">Spreadsheet or customer list</option>
-              <option value="Booking system">Booking system or diary</option>
-              <option value="CRM">CRM (e.g. Salesforce, HubSpot)</option>
-              <option value="Invoices or job sheets">Invoices or job sheets</option>
-              <option value="Quote history">Quote history</option>
-              <option value="Not sure">Not sure / it's messy</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Tell us a bit about your business and what you're hoping to get from the audit</label>
-            <textarea id="message" name="message" placeholder="e.g. We're a busy garage with around 800 customers in our system. Lots of them haven't been back in over a year. We don't have a great system for reminders..."></textarea>
-          </div>
-          <div style="font-size:0.8rem;color:#64748b;margin-bottom:16px;">
-            By submitting this form you agree to us contacting you about our services. Your information will be handled in accordance with our <a href="privacy.html">Privacy Policy</a>. We will never share your data with third parties for marketing purposes.
-          </div>
-          <button type="submit" id="submitBtn" class="btn btn-primary" style="width:100%;justify-content:center;">Book My Free Customer Revenue Audit</button>
-        </form>
       </div>
 
     </div>
@@ -199,61 +344,29 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <a href="index.html" class="footer-brand">
-          <span class="logo-mark">DLX</span>
-          DLX Solutions Group
-        </a>
-        <p class="footer-tagline">AI revenue systems for appointment-based businesses. Stop losing revenue from missed calls, no-shows, and old leads.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Solutions</h4>
-        <ul>
-          <li><a href="chair-fill.html">Chair Fill System</a></li>
-          <li><a href="lead-recovery.html">Lead Recovery System</a></li>
-          <li><a href="missed-call-recovery.html">Missed Call Recovery</a></li>
-          <li><a href="reputation-engine.html">Reputation Engine</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Industries</h4>
-        <ul>
-          <li><a href="dental-clinics.html">Dental Clinics</a></li>
-          <li><a href="aesthetic-clinics.html">Aesthetic Clinics</a></li>
-          <li><a href="results.html">Results</a></li>
-          <li><a href="about.html">About Us</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="cookies.html">Cookie Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="aup.html">Acceptable Use</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p><strong>DLX SOLUTIONS GROUP LIMITED</strong> &nbsp;|&nbsp; Company No: 17033961 &nbsp;|&nbsp; Registered in England and Wales</p>
-      <p>Registered Office: 11 Rhodfa Brenig, Colwyn Bay, LL29 6EA &nbsp;|&nbsp; Contact: <a href="mailto:support@dlxsolutions.co.uk" style="color:rgba(255,255,255,0.6);">support@dlxsolutions.co.uk</a></p>
-      <p class="text-small mt-8" style="color:rgba(255,255,255,0.4);">We operate online and do not accept visitors at our registered office.</p>
+  <div class="container">
+    <a href="index.html" class="footer-brand-row">
+      <span class="logo-mark">DLX</span>
+      <span>DLX Solutions</span>
+    </a>
+    <div class="footer-bottom-simple">
+      <p><strong style="color:rgba(255,255,255,.6);">DLX SOLUTIONS GROUP LIMITED</strong> &nbsp;|&nbsp; Company No: 17033961 &nbsp;|&nbsp; Registered in England &amp; Wales</p>
+      <p>Registered Office: 11 Rhodfa Brenig, Colwyn Bay, LL29 6EA &nbsp;|&nbsp; <a href="mailto:support@dlxsolutions.co.uk" style="color:rgba(255,255,255,.4);">support@dlxsolutions.co.uk</a></p>
       <div class="footer-legal-links">
         <a href="privacy.html">Privacy Policy</a>
         <a href="cookies.html">Cookie Policy</a>
         <a href="terms.html">Terms of Service</a>
-        <a href="aup.html">Acceptable Use Policy</a>
+        <a href="dpa.html">Data Processing Agreement</a>
+        <a href="security.html">Security</a>
       </div>
-      <p class="text-small mt-8" style="color:rgba(255,255,255,0.35);">&copy; 2026 DLX Solutions Group. All rights reserved.</p>
+      <p style="font-size:12px;color:rgba(255,255,255,.2);margin-top:12px;">&copy; 2026 DLX Solutions Group. All rights reserved.</p>
     </div>
   </div>
 </footer>
 
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-inner">
-    <p class="cookie-text">We use essential cookies to make this site work. <a href="cookies.html">Cookie Policy</a> | <a href="privacy.html">Privacy Policy</a></p>
+    <p class="cookie-text">We use essential cookies. <a href="cookies.html">Cookie Policy</a> | <a href="privacy.html">Privacy Policy</a></p>
     <div class="cookie-actions">
       <button class="cookie-btn cookie-accept" id="cookieAccept">Accept</button>
       <button class="cookie-btn cookie-reject" id="cookieReject">Reject Non-Essential</button>
@@ -262,6 +375,48 @@
 </div>
 
 <script>
+// Nav hamburger
+(function(){
+  var h = document.getElementById('hamburger');
+  var m = document.getElementById('mobileMenu');
+  if (!h || !m) return;
+  function toggle(e) {
+    e.preventDefault();
+    var open = m.classList.toggle('open');
+    h.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  h.addEventListener('click', toggle);
+  h.addEventListener('touchend', function(e){ e.preventDefault(); toggle(e); }, { passive: false });
+  m.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      m.classList.remove('open');
+      h.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+
+// Nav scroll shadow
+(function(){
+  var nav = document.getElementById('mainNav');
+  if (!nav) return;
+  window.addEventListener('scroll', function(){ nav.classList.toggle('nav-scrolled', window.scrollY > 10); }, { passive: true });
+})();
+
+// Cookie banner
+(function(){
+  var banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+  var KEY = 'dlx_cookie_consent';
+  try { if (!localStorage.getItem(KEY)) banner.classList.add('show'); } catch(e){}
+  document.getElementById('cookieAccept').addEventListener('click', function(){ try{ localStorage.setItem(KEY,'accepted'); }catch(e){} banner.classList.remove('show'); });
+  document.getElementById('cookieReject').addEventListener('click', function(){ try{ localStorage.setItem(KEY,'rejected'); }catch(e){} banner.classList.remove('show'); });
+})();
+
+// Form submission via FormSubmit.co — no account needed.
+// On the FIRST ever submission you will receive one activation email — click the link in it
+// and from then on every submission lands directly in your inbox.
 (function(){
   var form = document.getElementById('contactForm');
   if (!form) return;
@@ -269,52 +424,62 @@
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    var nameEl = document.getElementById('name');
-    var bizEl  = document.getElementById('clinicName');
+    var nameEl  = document.getElementById('name');
+    var bizEl   = document.getElementById('business');
     var emailEl = document.getElementById('email');
+    var hasErr  = false;
 
-    var hasError = false;
     [nameEl, bizEl, emailEl].forEach(function(f) {
-      if (f && !f.value.trim()) {
-        f.style.outline = '2px solid #dc2626';
-        hasError = true;
-      } else if (f) {
-        f.style.outline = '';
-      }
+      if (!f.value.trim()) { f.classList.add('error'); hasErr = true; }
+      else                  { f.classList.remove('error'); }
     });
-    if (hasError) return;
+    if (hasErr) { nameEl.focus(); return; }
 
     var btn = document.getElementById('submitBtn');
     btn.textContent = 'Sending…';
     btn.disabled = true;
+    document.getElementById('formError').style.display = 'none';
 
-    var errEl = document.getElementById('formError');
-    errEl.style.display = 'none';
+    var payload = {
+      name:          nameEl.value.trim(),
+      email:         emailEl.value.trim(),
+      'Business Name': bizEl.value.trim(),
+      Phone:         (document.getElementById('phone') || {}).value || '',
+      'Business Type': (document.getElementById('industry') || {}).value || '',
+      'Customer Data': (document.getElementById('data') || {}).value || '',
+      message:       (document.getElementById('message') || {}).value || '',
+      _subject:      'New Customer Revenue Audit Request — DLX Solutions',
+      _template:     'table'
+    };
 
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(form)
+    fetch('https://formsubmit.co/ajax/support@dlxsolutions.co.uk', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body:    JSON.stringify(payload)
     })
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
-      if (data.success) {
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.success === 'true' || d.success === true) {
         form.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
+        window.scrollTo({ top: document.getElementById('formSuccess').getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
       } else {
-        errEl.style.display = 'block';
-        btn.textContent = 'Book My Free Customer Revenue Audit';
-        btn.disabled = false;
+        throw new Error('not ok');
       }
     })
-    .catch(function() {
-      errEl.style.display = 'block';
-      btn.textContent = 'Book My Free Customer Revenue Audit';
+    .catch(function(){
+      document.getElementById('formError').style.display = 'block';
+      btn.textContent = 'Book My Free Customer Revenue Audit →';
       btn.disabled = false;
     });
   });
+
+  // Clear error style on input
+  ['name','business','email'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function(){ el.classList.remove('error'); });
+  });
 })();
 </script>
-<script src="js/main.js"></script>
 </body>
 </html>
