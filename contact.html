@@ -119,20 +119,33 @@
 
       <!-- FORM -->
       <div>
-        <div id="formConfirm" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:32px;text-align:center;">
-          <div style="font-size:2rem;margin-bottom:12px;">✅</div>
-          <h3 style="font-weight:700;margin-bottom:8px;">Enquiry sent!</h3>
-          <p style="color:var(--grey-text);font-size:0.9rem;">Your email client should have opened. If it did not, email us directly at <a href="mailto:support@dlxsolutions.co.uk">support@dlxsolutions.co.uk</a>. We will be in touch within 1 business day.</p>
+        <div id="formSuccess" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:36px;text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:12px;">✅</div>
+          <h3 style="font-weight:700;margin-bottom:8px;color:#15803d;">Message sent!</h3>
+          <p style="color:#374151;font-size:0.95rem;margin:0;">Thanks — we will be in touch within 1 business day to arrange your free Customer Revenue Audit.</p>
         </div>
 
+        <div id="formError" style="display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px 20px;margin-bottom:16px;">
+          <p style="color:#dc2626;font-size:0.9rem;margin:0;">Something went wrong sending your message. Please email us directly at <a href="mailto:support@dlxsolutions.co.uk" style="color:#dc2626;font-weight:600;">support@dlxsolutions.co.uk</a></p>
+        </div>
+
+        <!--
+          SETUP: Get a free access key at https://web3forms.com
+          Enter your email there and paste the key into the input below.
+          Submissions will be forwarded straight to your inbox, no backend needed.
+        -->
         <form id="contactForm" style="display:flex;flex-direction:column;gap:4px;">
+          <input type="hidden" name="access_key" value="PASTE_YOUR_WEB3FORMS_KEY_HERE" />
+          <input type="hidden" name="subject" value="New Customer Revenue Audit Request — DLX Solutions" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
           <div class="form-group">
             <label for="name">Your name *</label>
             <input type="text" id="name" name="name" placeholder="Sarah Smith" required />
           </div>
           <div class="form-group">
             <label for="clinicName">Business name *</label>
-            <input type="text" id="clinicName" name="clinicName" placeholder="Smith Garage" required />
+            <input type="text" id="clinicName" name="Business Name" placeholder="Smith Garage" required />
           </div>
           <div class="form-group">
             <label for="email">Email address *</label>
@@ -140,15 +153,15 @@
           </div>
           <div class="form-group">
             <label for="phone">Phone number</label>
-            <input type="tel" id="phone" name="phone" placeholder="07700 000000" />
+            <input type="tel" id="phone" name="Phone" placeholder="07700 000000" />
           </div>
           <div class="form-group">
             <label for="website">Website (if you have one)</label>
-            <input type="text" id="website" name="website" placeholder="www.smithdental.co.uk" />
+            <input type="text" id="website" name="Website" placeholder="www.smithdental.co.uk" />
           </div>
           <div class="form-group">
             <label for="niche">Business type</label>
-            <select id="niche" name="niche">
+            <select id="niche" name="Business Type">
               <option value="Car Garage">Car Garage</option>
               <option value="Trades / Home Services">Trades / Home Services</option>
               <option value="Salon or Barber">Salon or Barber</option>
@@ -160,7 +173,7 @@
           </div>
           <div class="form-group">
             <label for="data">What customer data do you currently have?</label>
-            <select id="data" name="data">
+            <select id="data" name="Customer Data">
               <option value="Spreadsheet or list">Spreadsheet or customer list</option>
               <option value="Booking system">Booking system or diary</option>
               <option value="CRM">CRM (e.g. Salesforce, HubSpot)</option>
@@ -173,10 +186,10 @@
             <label for="message">Tell us a bit about your business and what you're hoping to get from the audit</label>
             <textarea id="message" name="message" placeholder="e.g. We're a busy garage with around 800 customers in our system. Lots of them haven't been back in over a year. We don't have a great system for reminders..."></textarea>
           </div>
-          <div style="font-size:0.8rem;color:var(--grey-text);margin-bottom:16px;">
+          <div style="font-size:0.8rem;color:#64748b;margin-bottom:16px;">
             By submitting this form you agree to us contacting you about our services. Your information will be handled in accordance with our <a href="privacy.html">Privacy Policy</a>. We will never share your data with third parties for marketing purposes.
           </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Book My Free Customer Revenue Audit</button>
+          <button type="submit" id="submitBtn" class="btn btn-primary" style="width:100%;justify-content:center;">Book My Free Customer Revenue Audit</button>
         </form>
       </div>
 
@@ -255,47 +268,50 @@
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    var name = document.getElementById('name');
-    var clinicName = document.getElementById('clinicName');
-    var email = document.getElementById('email');
-    var phone = document.getElementById('phone');
-    var website = document.getElementById('website');
-    var niche = document.getElementById('niche');
-    var problem = document.getElementById('problem');
-    var volume = document.getElementById('volume');
-    var message = document.getElementById('message');
+
+    var nameEl = document.getElementById('name');
+    var bizEl  = document.getElementById('clinicName');
+    var emailEl = document.getElementById('email');
 
     var hasError = false;
-    [name, clinicName, email].forEach(function(field) {
-      if (field && !field.value.trim()) {
-        field.style.borderColor = '#dc2626';
+    [nameEl, bizEl, emailEl].forEach(function(f) {
+      if (f && !f.value.trim()) {
+        f.style.outline = '2px solid #dc2626';
         hasError = true;
-      } else if (field) {
-        field.style.borderColor = '';
+      } else if (f) {
+        f.style.outline = '';
       }
     });
     if (hasError) return;
 
-    var subject = encodeURIComponent('Revenue Leak Audit Request — ' + clinicName.value);
-    var body = encodeURIComponent(
-      'Name: ' + name.value + '\n' +
-      'Business: ' + clinicName.value + '\n' +
-      'Email: ' + email.value + '\n' +
-      'Phone: ' + (phone ? phone.value : 'N/A') + '\n' +
-      'Website: ' + (website ? website.value : 'N/A') + '\n' +
-      'Business Type: ' + (niche ? niche.value : 'N/A') + '\n' +
-      'Biggest Challenge: ' + (problem ? problem.value : 'N/A') + '\n' +
-      'Monthly Volume: ' + (volume ? volume.value : 'N/A') + '\n\n' +
-      'Additional notes:\n' + (message ? message.value : '')
-    );
+    var btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
 
-    window.location.href = 'mailto:support@dlxsolutions.co.uk?subject=' + subject + '&body=' + body;
+    var errEl = document.getElementById('formError');
+    errEl.style.display = 'none';
 
-    var confirm = document.getElementById('formConfirm');
-    if (confirm) {
-      confirm.style.display = 'block';
-      form.style.display = 'none';
-    }
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.success) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        errEl.style.display = 'block';
+        btn.textContent = 'Book My Free Customer Revenue Audit';
+        btn.disabled = false;
+      }
+    })
+    .catch(function() {
+      errEl.style.display = 'block';
+      btn.textContent = 'Book My Free Customer Revenue Audit';
+      btn.disabled = false;
+    });
   });
 })();
 </script>
