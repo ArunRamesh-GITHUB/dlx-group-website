@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Let's Work — DLX</title>
-  <meta name="description" content="Tell us about your business. We'll tell you what we'd do with it. Build my campaign with DLX." />
-  <meta property="og:title" content="Let's Work — DLX" />
-  <meta property="og:description" content="Let's make something people actually notice." />
+  <title>For Creators — DLX</title>
+  <meta name="description" content="DLX is building a network of creators for paid and gifted business campaigns. Join the creator interest list." />
+  <meta property="og:title" content="For Creators — DLX" />
+  <meta property="og:description" content="Creators, let's collab. Join the DLX creator interest list." />
   <meta property="og:type" content="website" />
   <link rel="preload" href="css/fonts/baloo2-v23-latin-800.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="css/fonts/poppins-v24-latin-500.woff2" as="font" type="font/woff2" crossorigin />
@@ -21,9 +21,9 @@
     <ul class="nav-links">
       <li><a href="services.html">Services</a></li>
       <li><a href="work.html">Work</a></li>
-      <li><a href="creators.html">For Creators</a></li>
+      <li><a href="creators.html" class="active">For Creators</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" class="btn btn-dark nav-cta active" style="padding:10px 20px;font-size:0.82rem;">Let's Work →</a></li>
+      <li><a href="contact.html" class="btn btn-dark nav-cta" style="padding:10px 20px;font-size:0.82rem;">Let's Work →</a></li>
     </ul>
     <button class="nav-hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
@@ -36,72 +36,98 @@
   <a href="contact.html">Let's Work →</a>
 </div>
 
-<section class="hero" style="padding-bottom:32px;">
+<section class="hero section-dark" style="padding-bottom:40px;">
   <div class="hero-inner">
-    <span class="eyebrow">Let's work</span>
-    <h1 style="margin-top:18px;">Let's make something<br />people actually notice.</h1>
-    <p class="lead center" style="margin-top:24px;">Tell us about your business. We'll tell you what we'd do with it.</p>
+    <span class="eyebrow lime">For creators</span>
+    <h1 style="margin-top:18px;">Creators,<br />let's collab.</h1>
+    <p class="lead center" style="margin-top:24px;">We're building a network of creators to work with businesses on paid and gifted campaigns. You don't need millions of followers — we care about good content, real audiences, and people who can make things worth watching.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="card-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="card anim-up">
+        <div class="card-num">01</div>
+        <h3>Any size audience</h3>
+        <p style="color:var(--ink-70);font-size:0.92rem;">Micro, local or niche — we care more about who's actually watching than how many.</p>
+      </div>
+      <div class="card anim-up">
+        <div class="card-num">02</div>
+        <h3>Paid &amp; gifted work</h3>
+        <p style="color:var(--ink-70);font-size:0.92rem;">Briefs range from paid collaborations to gifted trades, always agreed upfront.</p>
+      </div>
+      <div class="card anim-up">
+        <div class="card-num">03</div>
+        <h3>Real briefs, real businesses</h3>
+        <p style="color:var(--ink-70);font-size:0.92rem;">Local businesses who want genuine content, not a script read word for word.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="section section-tight" style="padding-top:0;">
   <div class="container" style="max-width:720px;">
     <div class="form-card">
+      <div class="form-title">Join the creator list</div>
 
       <div class="form-success" id="formSuccess">
-        Got it — thanks! We'll come back to you with some thoughts shortly.
+        You're on the list — thanks! We'll be in touch when a brief fits.
       </div>
       <div class="form-error-msg" id="formError">
         Something went wrong. Please email us directly at <a href="mailto:support@dlxsolutions.co.uk">support@dlxsolutions.co.uk</a>
       </div>
 
-      <form id="contactForm">
-        <div class="form-title">Build my campaign</div>
-
+      <form id="creatorForm">
         <div class="form-row">
-          <div class="form-group">
-            <label for="business">Business name *</label>
-            <input type="text" id="business" name="Business Name" placeholder="Corner Club Coffee" required />
-          </div>
           <div class="form-group">
             <label for="name">Your name *</label>
-            <input type="text" id="name" name="name" placeholder="Sarah Smith" required autocomplete="name" />
+            <input type="text" id="name" name="name" placeholder="Alex Morgan" required autocomplete="name" />
           </div>
-        </div>
-
-        <div class="form-row">
           <div class="form-group">
             <label for="email">Email address *</label>
-            <input type="email" id="email" name="email" placeholder="sarah@example.co.uk" required autocomplete="email" />
+            <input type="email" id="email" name="email" placeholder="alex@example.com" required autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="instagram">Instagram</label>
+            <input type="text" id="instagram" name="Instagram" placeholder="@yourhandle" />
           </div>
           <div class="form-group">
-            <label for="phone">Phone / Instagram</label>
-            <input type="text" id="phone" name="Phone or Instagram" placeholder="07700 000000 or @yourbusiness" />
+            <label for="tiktok">TikTok</label>
+            <input type="text" id="tiktok" name="TikTok" placeholder="@yourhandle" />
           </div>
         </div>
-
-        <div class="form-group">
-          <label for="sells">What do you sell?</label>
-          <input type="text" id="sells" name="What They Sell" placeholder="e.g. specialty coffee and pastries" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="Location" placeholder="Derby, UK" />
+          </div>
+          <div class="form-group">
+            <label for="followers">Follower range</label>
+            <select id="followers" name="Follower Range">
+              <option value="Under 1,000">Under 1,000</option>
+              <option value="1,000–5,000">1,000–5,000</option>
+              <option value="5,000–20,000">5,000–20,000</option>
+              <option value="20,000–100,000">20,000–100,000</option>
+              <option value="100,000+">100,000+</option>
+            </select>
+          </div>
         </div>
-
         <div class="form-group">
-          <label for="goal">What are you trying to achieve?</label>
-          <textarea id="goal" name="Goal" placeholder="e.g. more people through the door on weekday mornings"></textarea>
+          <label for="niches">Niches / content type</label>
+          <input type="text" id="niches" name="Niches" placeholder="e.g. food, fitness, lifestyle, product" />
         </div>
-
         <div class="form-group">
-          <label for="annoyance">What's currently annoying you about your marketing? (optional)</label>
-          <textarea id="annoyance" name="Current Frustration" placeholder="Go on, vent a little."></textarea>
+          <label for="portfolio">Example content / portfolio link</label>
+          <input type="text" id="portfolio" name="Portfolio" placeholder="Link to a post, reel or portfolio" />
         </div>
-
         <p class="form-note">
-          By submitting you agree to us contacting you about our services. We handle your data in line with our <a href="privacy.html">Privacy Policy</a> and will never pass it to third parties for marketing.
+          By submitting you agree to us contacting you about collaboration opportunities. We handle your data in line with our <a href="privacy.html">Privacy Policy</a> and will never pass it to third parties for marketing.
         </p>
-
-        <button type="submit" class="btn btn-block" id="submitBtn">Build my campaign →</button>
+        <button type="submit" class="btn btn-lime btn-block" id="submitBtn">Join the creator list →</button>
       </form>
-
     </div>
   </div>
 </section>
@@ -184,25 +210,32 @@
   if(a){ a.addEventListener('click', function(){ set('accepted'); banner.classList.remove('show'); }); }
   if(r){ r.addEventListener('click', function(){ set('rejected'); banner.classList.remove('show'); }); }
 })();
-
-// Contact form submission via FormSubmit.co
 (function(){
-  var form = document.getElementById('contactForm');
-  if (!form) return;
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var obs = new IntersectionObserver(function(entries){ entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('in-view'); obs.unobserve(entry.target); } }); }, { threshold: 0, rootMargin: '250px 0px -10px 0px' });
+  document.querySelectorAll('.anim-up').forEach(function(el, i){ el.style.transitionDelay = Math.min((i % 6) * 0.06, 0.3) + 's'; obs.observe(el); });
+  // Safety net: if an element's intersection event never fires (fast scroll, slow device),
+  // force it visible anyway so content can never get stuck permanently hidden.
+  setTimeout(function(){
+    document.querySelectorAll('.anim-up:not(.in-view)').forEach(function(el){ el.classList.add('in-view'); });
+  }, 1800);
+})();
 
+// Creator application submission via FormSubmit.co
+(function(){
+  var form = document.getElementById('creatorForm');
+  if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-
-    var bizEl   = document.getElementById('business');
-    var nameEl  = document.getElementById('name');
+    var nameEl = document.getElementById('name');
     var emailEl = document.getElementById('email');
-    var hasErr  = false;
-
-    [bizEl, nameEl, emailEl].forEach(function(f) {
+    var hasErr = false;
+    [nameEl, emailEl].forEach(function(f) {
       if (!f.value.trim()) { f.classList.add('error'); hasErr = true; }
-      else                  { f.classList.remove('error'); }
+      else { f.classList.remove('error'); }
     });
-    if (hasErr) { bizEl.focus(); return; }
+    if (hasErr) { nameEl.focus(); return; }
 
     var btn = document.getElementById('submitBtn');
     btn.textContent = 'Sending…';
@@ -210,21 +243,22 @@
     document.getElementById('formError').style.display = 'none';
 
     var payload = {
-      'Business Name': bizEl.value.trim(),
-      name:            nameEl.value.trim(),
-      email:           emailEl.value.trim(),
-      'Phone or Instagram': (document.getElementById('phone') || {}).value || '',
-      'What They Sell':     (document.getElementById('sells') || {}).value || '',
-      Goal:                 (document.getElementById('goal') || {}).value || '',
-      'Current Frustration': (document.getElementById('annoyance') || {}).value || '',
-      _subject:  'New "Build My Campaign" Enquiry — DLX',
+      name: nameEl.value.trim(),
+      email: emailEl.value.trim(),
+      Instagram: (document.getElementById('instagram') || {}).value || '',
+      TikTok: (document.getElementById('tiktok') || {}).value || '',
+      Location: (document.getElementById('location') || {}).value || '',
+      'Follower Range': (document.getElementById('followers') || {}).value || '',
+      Niches: (document.getElementById('niches') || {}).value || '',
+      Portfolio: (document.getElementById('portfolio') || {}).value || '',
+      _subject: 'New Creator Application — DLX',
       _template: 'table'
     };
 
     fetch('https://formsubmit.co/ajax/support@dlxsolutions.co.uk', {
-      method:  'POST',
+      method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body:    JSON.stringify(payload)
+      body: JSON.stringify(payload)
     })
     .then(function(r){ return r.json(); })
     .then(function(d){
@@ -238,12 +272,11 @@
     })
     .catch(function(){
       document.getElementById('formError').style.display = 'block';
-      btn.textContent = 'Build my campaign →';
+      btn.textContent = "Join the creator list →";
       btn.disabled = false;
     });
   });
-
-  ['business','name','email'].forEach(function(id){
+  ['name','email'].forEach(function(id){
     var el = document.getElementById(id);
     if (el) el.addEventListener('input', function(){ el.classList.remove('error'); });
   });

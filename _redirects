@@ -5,3 +5,15 @@
 
 # Redirect bare /index to root
 /index  /  301
+
+# Old "AI Customer Intelligence" positioning — retired in the Oct 2026 rebrand
+/dental-clinics          /  301
+/aesthetic-clinics       /  301
+/reputation-engine       /  301
+/lead-recovery           /  301
+/missed-call-recovery    /  301
+/chair-fill              /  301
+/how-it-works            /  301
+/pricing                 /  301
+/results                 /  301
+/solutions                /services  301

@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — DLX</title>
-  <meta name="description" content="DLX is a small, early-stage creative growth studio. We make businesses worth paying attention to, then turn that attention into customers." />
-  <meta property="og:title" content="About — DLX" />
-  <meta property="og:description" content="Nobody remembers boring. Here's why DLX exists and how we work." />
+  <title>Work — DLX</title>
+  <meta name="description" content="Concept campaigns from DLX — self-initiated creative ideas that show how we'd approach a brief. Not client work, not performance claims." />
+  <meta property="og:title" content="Work — DLX" />
+  <meta property="og:description" content="What we'd do. Concept campaigns, clearly labelled, no invented clients." />
   <meta property="og:type" content="website" />
   <link rel="preload" href="css/fonts/baloo2-v23-latin-800.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="css/fonts/poppins-v24-latin-500.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="img/dlx-favicon.png" />
+  <style>
+    .concept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 980px) { .concept-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 680px) { .concept-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
 
@@ -20,9 +25,9 @@
     <a href="index.html" class="nav-logo"><img src="img/dlx-logo-mark.png" alt="DLX" width="42" height="42" /></a>
     <ul class="nav-links">
       <li><a href="services.html">Services</a></li>
-      <li><a href="work.html">Work</a></li>
+      <li><a href="work.html" class="active">Work</a></li>
       <li><a href="creators.html">For Creators</a></li>
-      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="contact.html" class="btn btn-dark nav-cta" style="padding:10px 20px;font-size:0.82rem;">Let's Work →</a></li>
     </ul>
     <button class="nav-hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -38,49 +43,71 @@
 
 <section class="hero" style="padding-bottom:40px;">
   <div class="hero-inner">
-    <span class="eyebrow">About</span>
-    <h1 style="margin-top:18px;">We make businesses<br />worth paying attention to.</h1>
+    <span class="eyebrow">Work / Concepts</span>
+    <h1 style="margin-top:18px;">What we'd do.</h1>
+    <p class="lead center" style="margin-top:24px;">DLX is early-stage, so instead of fake case studies and invented stats, here's the kind of thing we'd actually build. Each one below is a self-initiated creative concept — not commissioned client work, not a results claim.</p>
   </div>
 </section>
 
 <section class="section" style="padding-top:24px;">
-  <div class="container center" style="max-width:720px;">
-    <p class="lead anim-up">DLX is a small, early-stage creative growth studio. We work with local businesses to get them more attention, more customers and more sales — through content, creators, campaigns and a bit of real-world marketing when it makes sense.</p>
-    <p class="lead anim-up" style="margin-top:20px;">We're honest about where we are. We don't have a wall of client logos or a highlight reel of six-figure results — yet. What we do have is a clear way of working, strong creative instincts, and a website that's hopefully proof enough that we understand branding and attention.</p>
-  </div>
-</section>
-
-<section class="section section-dark">
   <div class="container">
-    <div class="card-grid" style="grid-template-columns:repeat(3,1fr);">
-      <div class="anim-up" style="background:rgba(247,240,222,.06);border-radius:var(--radius);padding:30px 26px;">
-        <h3 style="text-transform:none;font-family:var(--body);font-weight:700;font-size:1.1rem;margin-bottom:10px;">Attention first.</h3>
-        <p style="color:var(--cream-70);font-size:0.92rem;">If nobody notices it, nothing else matters. Every brief starts with how we get people to stop scrolling.</p>
+    <div class="concept-grid">
+      <div class="concept-card anim-up">
+        <span class="concept-tag">Concept campaign</span>
+        <div class="concept-art">The Café<br />That Got Queued</div>
+        <div class="concept-body">
+          <p>Creator content showing the morning rush, paired with a direct-mail drop to the streets around it. One offer, three ways to share it.</p>
+          <div class="concept-channels"><span>Creators</span><span>Content</span><span>Direct mail</span></div>
+        </div>
       </div>
-      <div class="anim-up" style="background:rgba(247,240,222,.06);border-radius:var(--radius);padding:30px 26px;">
-        <h3 style="text-transform:none;font-family:var(--body);font-weight:700;font-size:1.1rem;margin-bottom:10px;">Sales second.</h3>
-        <p style="color:var(--cream-70);font-size:0.92rem;">Attention is only worth something if it turns into enquiries. We build the path from scroll to sale.</p>
+      <div class="concept-card anim-up">
+        <span class="concept-tag">Concept campaign</span>
+        <div class="concept-art">The Clinic<br />Nobody Was Scared Of</div>
+        <div class="concept-body">
+          <p>Behind-the-scenes staff content to kill the awkwardness around a first visit, boosted with targeted paid social to the local area.</p>
+          <div class="concept-channels"><span>Content</span><span>Paid ads</span></div>
+        </div>
       </div>
-      <div class="anim-up" style="background:rgba(247,240,222,.06);border-radius:var(--radius);padding:30px 26px;">
-        <h3 style="text-transform:none;font-family:var(--body);font-weight:700;font-size:1.1rem;margin-bottom:10px;">Fluff nowhere.</h3>
-        <p style="color:var(--cream-70);font-size:0.92rem;">No invented stats, no jargon, no "unlocking potential." Just clear ideas, built properly.</p>
+      <div class="concept-card anim-up">
+        <span class="concept-tag">Concept campaign</span>
+        <div class="concept-art">The Barber's<br />Sunday Takeover</div>
+        <div class="concept-body">
+          <p>A one-day creator takeover and gifted-chair campaign, promoted with a flyer drop and a QR code offer for walk-ins.</p>
+          <div class="concept-channels"><span>Creators</span><span>UGC</span><span>Flyers</span></div>
+        </div>
+      </div>
+      <div class="concept-card anim-up">
+        <span class="concept-tag">Concept campaign</span>
+        <div class="concept-art">The Gym That<br />Filmed Its Regulars</div>
+        <div class="concept-body">
+          <p>A simple staff-filmed content system turning everyday members into the gym's best advert — no influencers required.</p>
+          <div class="concept-channels"><span>Content</span><span>Staff system</span></div>
+        </div>
+      </div>
+      <div class="concept-card anim-up">
+        <span class="concept-tag">Concept campaign</span>
+        <div class="concept-art">The Hotel's<br />Off-Season Offer</div>
+        <div class="concept-body">
+          <p>A tightly targeted paid-social push around a single off-season offer, supported by a short creator stay-and-review trade.</p>
+          <div class="concept-channels"><span>Paid ads</span><span>Creators</span></div>
+        </div>
+      </div>
+      <div class="concept-card anim-up">
+        <span class="concept-tag">Concept campaign</span>
+        <div class="concept-art">The Estate Agent's<br />Street-Level Mailer</div>
+        <div class="concept-body">
+          <p>A hyper-local direct-mail drop timed with a new listing, backed by short-form video of the property for the same streets online.</p>
+          <div class="concept-channels"><span>Direct mail</span><span>Content</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container center" style="max-width:640px;">
-    <h2 class="anim-up">How we work</h2>
-    <p class="lead anim-up" style="margin-top:18px;">We don't force every business into the same package. We figure out what's actually going to move the needle — sometimes that's a content system, sometimes it's a creator campaign, sometimes it's a flyer through 2,000 doors. Often it's a mix.</p>
-    <a href="services.html" class="btn" style="margin-top:28px;">See what we do →</a>
-  </div>
-</section>
-
-<section class="section section-orange">
+<section class="section section-lime">
   <div class="container center">
-    <h2 class="anim-up">Let's make something<br />people actually notice.</h2>
-    <p class="lead anim-up" style="margin:18px auto 32px;">Tell us about your business. We'll tell you what we'd do with it.</p>
+    <h2 class="anim-up">Want one of these<br />built for your business?</h2>
+    <p class="lead anim-up" style="margin:18px auto 32px;">Tell us what you're trying to sell and who you're trying to reach — we'll tell you what we'd build.</p>
     <a href="contact.html" class="btn btn-dark">Build my campaign →</a>
   </div>
 </section>
