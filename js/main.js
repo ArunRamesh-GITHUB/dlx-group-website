@@ -183,7 +183,6 @@
     '.does-grid',
     '.pricing-grid',
     '.usp-cards',
-    '.footer-top > div',
   ];
 
   gridSelectors.forEach(function (sel) {
@@ -210,6 +209,14 @@
   document.querySelectorAll('.anim-up').forEach(function (el) {
     observer.observe(el);
   });
+
+  // Safety net: if an element's intersection event never fires (fast scroll, slow device),
+  // force it visible anyway so content can never get stuck permanently hidden.
+  setTimeout(function () {
+    document.querySelectorAll('.anim-up:not(.in-view)').forEach(function (el) {
+      el.classList.add('in-view');
+    });
+  }, 1800);
 })();
 
 // ---- Counter animation for stat/metric numbers ----

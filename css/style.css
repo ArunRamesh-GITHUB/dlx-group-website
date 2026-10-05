@@ -494,10 +494,13 @@ footer { background: var(--ink); color: var(--cream); }
 .legal-body th { background: var(--cream-dim); }
 
 /* ---- Responsive grid collapses ---- */
+.card-grid-3 { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 980px) {
   .card-grid { grid-template-columns: 1fr 1fr; }
+  .card-grid-3 { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 620px) {
   .card-grid { grid-template-columns: 1fr; }
+  .card-grid-3 { grid-template-columns: 1fr; }
   .section { padding: 60px 0; }
 }
