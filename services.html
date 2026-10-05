@@ -95,14 +95,17 @@
   <div class="container pillar-grid">
     <div>
       <span class="pillar-num">03</span>
-      <h2>Campaigns</h2>
-      <p class="lead" style="margin-top:16px;">A proper idea, not just a post. We build the concept, the offer and the media plan around a single moment worth paying attention to.</p>
+      <h2>Ads &amp; Campaigns</h2>
+      <p class="lead" style="margin-top:16px;">A proper idea, not just a post — and a paid budget pointed at the right people. We build the concept, the offer and the media plan around a single moment worth paying attention to.</p>
     </div>
     <ul class="pillar-list">
+      <li>Meta &amp; Instagram ads</li>
+      <li>Google ads</li>
+      <li>TikTok ads</li>
       <li>Campaign concepts</li>
       <li>Promotions &amp; offers</li>
       <li>Launch campaigns</li>
-      <li>Paid social</li>
+      <li>Landing pages</li>
       <li>Creative strategy</li>
     </ul>
   </div>
@@ -112,13 +115,16 @@
   <div class="container pillar-grid">
     <div>
       <span class="pillar-num" style="color:var(--lime);">04</span>
-      <h2>Real-World Marketing</h2>
-      <p class="lead" style="margin-top:16px;">Attention doesn't only live on a screen. We bring campaigns into the physical world when that's what actually moves the needle locally.</p>
+      <h2>Real-World &amp; Everything Else</h2>
+      <p class="lead" style="margin-top:16px;">Attention doesn't only live on a screen, and not every useful channel is glamorous. If it gets your business in front of more people, it's on the table.</p>
     </div>
     <ul class="pillar-list">
       <li>Direct mail</li>
-      <li>Flyers</li>
-      <li>QR campaigns</li>
+      <li>Flyers &amp; QR campaigns</li>
+      <li>Local SEO &amp; Google Business</li>
+      <li>Email marketing</li>
+      <li>PR &amp; local press</li>
+      <li>Events &amp; sponsorships</li>
       <li>Local promotions</li>
       <li>Online + offline integrated campaigns</li>
     </ul>
@@ -197,39 +203,6 @@
   </div>
 </div>
 
-<script>
-(function(){
-  var h = document.getElementById('hamburger');
-  var m = document.getElementById('mobileMenu');
-  if(!h || !m) return;
-  function toggle(e){ e.preventDefault(); var isOpen = m.classList.toggle('open'); h.classList.toggle('open', isOpen); document.body.style.overflow = isOpen ? 'hidden' : ''; }
-  h.addEventListener('click', toggle);
-  h.addEventListener('touchend', function(e){ e.preventDefault(); toggle(e); }, { passive: false });
-  m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ m.classList.remove('open'); h.classList.remove('open'); document.body.style.overflow = ''; }); });
-})();
-(function(){
-  var banner = document.getElementById('cookieBanner');
-  if(!banner) return;
-  var KEY = 'dlx_cookie_consent';
-  function get(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
-  function set(v){ try{ localStorage.setItem(KEY, v); }catch(e){} }
-  if(!get()){ banner.classList.add('show'); }
-  var a = document.getElementById('cookieAccept');
-  var r = document.getElementById('cookieReject');
-  if(a){ a.addEventListener('click', function(){ set('accepted'); banner.classList.remove('show'); }); }
-  if(r){ r.addEventListener('click', function(){ set('rejected'); banner.classList.remove('show'); }); }
-})();
-(function(){
-  if(!('IntersectionObserver' in window)) return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var obs = new IntersectionObserver(function(entries){ entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('in-view'); obs.unobserve(entry.target); } }); }, { threshold: 0, rootMargin: '250px 0px -10px 0px' });
-  document.querySelectorAll('.anim-up').forEach(function(el, i){ el.style.transitionDelay = Math.min((i % 6) * 0.06, 0.3) + 's'; obs.observe(el); });
-  // Safety net: if an element's intersection event never fires (fast scroll, slow device),
-  // force it visible anyway so content can never get stuck permanently hidden.
-  setTimeout(function(){
-    document.querySelectorAll('.anim-up:not(.in-view)').forEach(function(el){ el.classList.add('in-view'); });
-  }, 1800);
-})();
-</script>
+<script src="js/app.js"></script>
 </body>
 </html>
