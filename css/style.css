@@ -463,9 +463,12 @@ footer { background: var(--ink); color: var(--cream); }
 .cookie-accept { background: var(--lime); color: var(--ink); }
 
 /* ---- Scroll animations ---- */
-.anim-up { opacity: 0; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
-.anim-up.in-view { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) { .anim-up { opacity: 1; transform: none; } }
+/* Scroll-reveal was removed: IntersectionObserver-based hiding left real
+   visitors scrolling faster than the trigger with blank gaps where content
+   hadn't faded in yet. Content is now always visible; .in-view is still
+   toggled by the JS for anyone extending this, but it no longer hides
+   anything by default. */
+.anim-up { opacity: 1; transform: none; }
 
 /* ---- Generic content page (legal pages) ---- */
 .legal-content { padding: 56px 0 80px; }
